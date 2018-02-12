@@ -1,16 +1,14 @@
 # sequelize-test
 
-A starter boilerplate for NodeJS and Express
+A sample test case for sequelize issue
 
-## Running the project locally
-
-**Note** This project requires node v4.x.x or higher and npm 2.14.7 but in order to be able to take advantage of the complete functionality we **recommend node >=v6.5.0 and npm >=3.10.3**.
+## Running locally
 
 ```
 git clone https://github.com/arun-awnics/sequelize-test.git
 cd sequelize-test
 
-# install project's dependencies
+# install dependencies
 npm install
 
 # watches your files for any change and restarts the server
