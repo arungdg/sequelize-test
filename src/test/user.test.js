@@ -9,7 +9,7 @@ var userService = new UserService();
 
 describe('userDao', function() {
 
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 50; i++) {
         it('creates a user', function(done) {
             this.timeout(1000);
             var user = {
