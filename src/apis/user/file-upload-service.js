@@ -33,7 +33,7 @@ class FileUploadService {
 
 
     getPublicUrl(filename) {
-        return `https://storage.googleapis.com/mmstore/${filename}`;
+        return `https://storage.googleapis.com/BUCKET_NAME/${filename}`;
     }
 }
 
