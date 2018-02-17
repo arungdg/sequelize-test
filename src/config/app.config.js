@@ -30,10 +30,10 @@ class Config {
             }
         });
         this.storage = Storage({
-            projectId: 'mesomeds',
-            keyFilename: './src/util/mesomeds-6aaa1473891d.json'
+            projectId: projectId,
+            keyFilename: '/path/to/config.json'
         });
-        this.bucket = this.storage.bucket('mmstore');
+        this.bucket = this.storage.bucket(BUCKET_NAME);
     }
 
     configureApp() {
