@@ -18,6 +18,7 @@
     "author": "Arun Gadag<arun.gadag@awnics.com>",
     "license": "MIT",
     "dependencies": {
+        "@google-cloud/storage": "^1.6.0",
         "async": "^2.5.0",
         "babel-polyfill": "^6.26.0",
         "body-parser": "^1.17.2",
@@ -31,6 +32,7 @@
         "express-session": "^1.15.5",
         "express-status-monitor": "^1.0.0",
         "file-system": "^2.2.2",
+        "google-cloud": "^0.57.0",
         "lodash": "^4.17.4",
         "log4js": "^2.4.1",
         "lusca": "^1.5.1",

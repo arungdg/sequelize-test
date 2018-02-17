@@ -8,16 +8,32 @@ import MySql from '../util/conn.mysql';
 import http from 'http';
 import log from './log4js.config';
 import user from '../apis/user/user.controller';
+import FileUpload from '../apis/user/file-upload-service';
+import Multer from 'multer';
+import fs from 'fs';
+import Storage from '@google-cloud/storage';
 
 class Config {
     constructor() {
         this.app = express();
         this.session = session;
         this.flash = flash;
+        this.fileUploadService = new FileUpload();
         this.http = http.Server(this.app);
         this.dotenv = dotenv;
         this.lodash = lodash;
         this.dotenv.config({ path: '.env.dev' });
+        this.multer = Multer({
+            storage: Multer.MemoryStorage,
+            limits: {
+                fileSize: 5 * 1024 * 1024 // no larger than 5mb
+            }
+        });
+        this.storage = Storage({
+            projectId: 'mesomeds',
+            keyFilename: './src/util/mesomeds-6aaa1473891d.json'
+        });
+        this.bucket = this.storage.bucket('mmstore');
     }
 
     configureApp() {
@@ -43,6 +59,10 @@ class Config {
 
     configureRoutes() {
         this.app.use('/user', user);
+        this.app.post('/fileUpload', this.multer.single('file'), (req, res, next) => {
+            this.fileUploadService.uploadFile(req, this.bucket, next);
+            res.send({ 'value': 'File successfully uploaded' });
+        });
     }
 
     listen(port) {

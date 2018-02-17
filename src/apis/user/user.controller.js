@@ -2,10 +2,14 @@ import express from 'express';
 import UserDao from './user.dao';
 import UserService from './user.service';
 import log from '../../config/log4js.config';
+import FileUploadService from './file-upload-service';
+import Multer from 'multer';
 
 var router = express.Router();
 var userDao = new UserDao();
 var userService = new UserService();
+var fileUploadService = new FileUploadService();
+var upload = Multer();
 
 router.post('/controllers/createUser', function(req, res) {
     var user = req.body;
